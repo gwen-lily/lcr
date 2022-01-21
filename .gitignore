@@ -1,5 +1,4 @@
-*.png
 *.xml
-*.txt
 .idea/*
 venv
+output/*
