@@ -70,6 +70,13 @@ def main(sys_args):
     x, y = simulation(sys_args.players, trials)
     outfile_stem = f'p-{sys_args.players}-t-{trials}'
 
+    if sys_args.save:
+        if not OUTPUT_DIR.is_dir():
+            if not OUTPUT_DIR.exists():
+                OUTPUT_DIR.mkdir()
+            else:
+                raise PermissionError(OUTPUT_DIR)
+
     if sys_args.print:
         text = print_results(x, y)
 
