@@ -11,6 +11,7 @@ This library can run simulations of LCR games and return winner distribution dat
 ### Dependencies
 
 * numpy
+* pandas
 * tabulate
 * matplotlib
 
@@ -21,12 +22,15 @@ This library can run simulations of LCR games and return winner distribution dat
 ### Executing program
 
 ```
-python lcr.py [-h] [--print] [--graph] [--save] players trials
+python lcr.py [-h] [--print] [--data] [--graph] [--save] players trials
 ```
 
 #### Output
 ##### Print output
 * [print](https://github.com/noahgill409/lcr/blob/master/example-output/p-10-t-1000000.txt)
+
+##### Data output
+*
 
 ##### Graph output
 ![graph](https://github.com/noahgill409/lcr/blob/master/example-output/p-10-t-1000000.png)

@@ -1,12 +1,18 @@
 import numpy as np
+import pandas as pd
 import argparse
+from pathlib import Path
 from tabulate import tabulate
 import matplotlib.pyplot as plt
-from pathlib import Path
+
 
 STARTING_CASH = 3
 MAX_ROLLS = 3
+PLAYER_COLUMN_HEADER = 'player'
+VICTORY_COLUMN_HEADER = 'victory ratio'
+CSV_SEPARATOR = '\t'
 OUTPUT_DIR = Path(__file__).parent.joinpath('output')
+
 
 
 def game_active(game_state: np.ndarray) -> bool:
@@ -58,6 +64,12 @@ def print_results(player_ids: np.ndarray, player_victory_ratios: np.ndarray) -> 
     return formatted_table
 
 
+def create_dataframe(player_ids: np.ndarray, player_victory_ratios: np.ndarray) -> pd.DataFrame:
+    data = {PLAYER_COLUMN_HEADER: player_ids, VICTORY_COLUMN_HEADER: player_victory_ratios}
+    df = pd.DataFrame(data)
+    return df
+
+
 def graph_results(player_ids: np.ndarray, player_victory_ratios: np.ndarray):
     fig, ax = plt.subplots()
     ax.plot(player_ids, player_victory_ratios)
@@ -85,6 +97,14 @@ def main(sys_args):
             with open(outfile, 'w') as f:
                 f.write(text)
 
+    if sys_args.data:
+        df = create_dataframe(x, y)
+        print(df.head())
+
+        if sys_args.save:
+            outfile = OUTPUT_DIR.joinpath(outfile_stem + '.csv')
+            df.to_csv(outfile, sep=CSV_SEPARATOR)
+
     if sys_args.graph:
         fig = graph_results(x, y)
 
@@ -103,6 +123,7 @@ if __name__ == '__main__':
     parser.add_argument('players', type=int, help="The number of players.")
     parser.add_argument('trials', type=int, help="The number of simulations to run")
     parser.add_argument('--print', action='store_true', help='Add this flag to print the results')
+    parser.add_argument('--data', action='store_true', help='Add this flag to save the data to csv')
     parser.add_argument('--graph', action='store_true', help='Add this flag to graph the results')
     parser.add_argument('--save', action='store_true', help='Add this flag to save any output you generate')
     args = parser.parse_args()
