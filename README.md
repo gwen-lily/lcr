@@ -30,7 +30,7 @@ python lcr.py [-h] [--print] [--data] [--graph] [--save] players trials
 * [print](https://github.com/noahgill409/lcr/blob/master/example-output/p-10-t-1000000.txt)
 
 ##### Data output
-*
+* [data](https://github.com/noahgill409/lcr/blob/master/example-output/p-10-t-100000.csv)
 
 ##### Graph output
 ![graph](https://github.com/noahgill409/lcr/blob/master/example-output/p-10-t-1000000.png)
