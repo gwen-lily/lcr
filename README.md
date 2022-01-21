@@ -20,11 +20,16 @@ This library can run simulations of LCR games and return winner distribution dat
 
 ### Executing program
 
-* `usage: main.py [-h] [--print] [--graph] [--save] players trials`
-
 ```
 python lcr.py [-h] [--print] [--graph] [--save] players trials
 ```
+
+#### Output
+##### Print output
+* [print](https://github.com/noahgill409/lcr/blob/master/example-output/p-10-t-1000000.txt)
+
+##### Graph output
+![graph](https://github.com/noahgill409/lcr/blob/master/example-output/p-10-t-1000000.png)
 
 ## Help
 
